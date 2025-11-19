@@ -221,10 +221,8 @@ export default function RoulettePage() {
         {/* Wheel (SVG) */}
         <svg
           ref={wheelRef}
-          width="320 lg:420"
-          height="320 lg:420"
           viewBox="0 0 420 420"
-          className="rounded-full shadow-xl"
+          className="w-[320px] h-[320px] lg:w-[420px] lg:h-[420px] rounded-full shadow-xl block"
           style={{
             transition: "transform 0s",
             transform: "rotate(0deg)",
