@@ -6,6 +6,7 @@ import Image from "next/image";
 import logoX1 from "@/public/logo/LogoColor.png"
 
 import type { Prize } from "../type";
+import Loading from "@/components/loading";
 
 
 const MAX_CHARS_PER_LINE = 10; // define após quantos caracteres quebrar
@@ -53,7 +54,7 @@ export default function RoulettePage() {
         } = await res.json();
 
         if (!mounted) return;
-        // console.log("Prizes fetched:", data, data.pool ,Array.isArray(data.pool));
+
         if (Array.isArray(data.pool) && data.pool.length > 0) {
           setPrizes(data.pool);
         } else {
@@ -186,7 +187,7 @@ export default function RoulettePage() {
       <div className="min-h-screen flex items-center justify-center bg-black text-white">
         <div className="text-center">
           <div className="mb-4">Carregando roleta...</div>
-          <div className="w-12 h-12 rounded-full border-4 border-t-transparent animate-spin border-blue-400 mx-auto" />
+          <Loading />
         </div>
       </div>
     );
@@ -284,7 +285,7 @@ export default function RoulettePage() {
                 />
 
                 <text
-                  fontSize={12}
+                  fontSize={14}
                   textAnchor="middle"
                   alignmentBaseline="middle"
                   style={{ fill: "#0f172a", fontWeight: 700 }}
