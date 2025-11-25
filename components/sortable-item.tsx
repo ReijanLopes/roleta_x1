@@ -66,7 +66,7 @@ export function SortableItem({ item, onEdit, onDelete }: SortableItemProps) {
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-semibold text-foreground truncate">
+            <h3 className="text-lg font-semibold text-black dark:text-black truncate">
               {item.name}
             </h3>
             <p className="text-sm text-muted-foreground line-clamp-2">

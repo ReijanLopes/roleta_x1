@@ -5,4 +5,5 @@ export interface Prize {
   color: string;
   description: string;
   index: number;
+  isGood: boolean;
 }

@@ -18,6 +18,7 @@ export async function POST(req: NextRequest) {
   const name = formData.get("name") as string | null;
   const description = formData.get("description") as string | null;
   // const imageUrl = formData.get("imageUrl") as string | null;
+  const isGood = formData.get("isGood") as string | null;
   const index = formData.get("index") as string | null;
   const color = formData.get("color") as string | null;
   // || !imageUrl
@@ -39,6 +40,7 @@ export async function POST(req: NextRequest) {
           imageUrl: "",
           index: parseInt(index, 10),
           color,
+          isGood: isGood === 'true' ? true : false,
         })
         .eq("id", id)
         .select('*')
@@ -63,6 +65,7 @@ export async function POST(req: NextRequest) {
         imageUrl: "",
         index: parseInt(index, 10),
         color,
+        isGood: isGood === 'true' ? true : false,
       })
       .select('*')
       .single();

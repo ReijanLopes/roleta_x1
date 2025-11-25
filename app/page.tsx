@@ -3,11 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 
-import logoX1 from "@/public/logo/LogoColor.png"
+import logoX1 from "@/public/logo/LogoColor.png";
 
 import type { Prize } from "../type";
 import Loading from "@/components/loading";
-
 
 const MAX_CHARS_PER_LINE = 10; // define após quantos caracteres quebrar
 
@@ -216,7 +215,13 @@ export default function RoulettePage() {
           ▼
         </div>
         <div className="absolute left-1/2 -translate-x-[calc(50%+2px)] lg:-translate-x-[calc(50%+4px)] translate-y-1/2 bottom-1/2 text-4xl z-20">
-         <Image src={logoX1} alt="Logo da X1" height={60} width={60} className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px]"/>
+          <Image
+            src={logoX1}
+            alt="Logo da X1"
+            height={60}
+            width={60}
+            className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px]"
+          />
         </div>
 
         {/* Wheel (SVG) */}
@@ -354,14 +359,27 @@ export default function RoulettePage() {
                 {result.name}
               </h2>
               <p>{result.description}</p>
-              <p className="mt-3 text-sm text-zinc-300">
-                Parabéns! Este é o prêmio sorteado. Mostre esta tela na loja
-                para resgatar o prêmio. Consulte os{" "}
-                <a href="/terms" className="underline">
-                  termos
-                </a>
-                .
-              </p>
+              {result?.isGood ? (
+                <p className="mt-3 text-sm text-zinc-300">
+                  Parabéns! Este é o prêmio sorteado. Mostre esta tela na loja
+                  para resgatar o prêmio. Consulte os{" "}
+                  <a href="/terms" className="underline">
+                    termos
+                  </a>
+                  .
+                </p>
+              ) : (
+                <p className="mt-3 text-sm text-zinc-300">
+                  Infelizmente desta vez não saiu nenhum prêmio... mas não
+                  desanima! Continue participando — sua próxima chance pode
+                  estar bem perto. Consulte os{" "}
+                  <a href="/terms" className="underline">
+                    termos
+                  </a>
+                  .
+                </p>
+              )}
+
               <div className="mt-3">
                 <button
                   onClick={() => {
