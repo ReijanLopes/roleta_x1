@@ -15,6 +15,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { SubmitButtonClient } from "./submit-button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 interface EditDialogProps {
   item: Prize;
@@ -130,8 +137,27 @@ export function EditDialog({
               min="1"
             />
           </div>
+          <div></div>
+          <Select
+            value={formData.isGood.toString()}
+            onValueChange={(e) => {
+              setFormData({
+                ...formData,
+                isGood: e === "true" ? true : false,
+              });
+            }}
+            
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Selecione a qualidade" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="true">Bom 🤩</SelectItem>
+              <SelectItem value="false">Ruim 😭</SelectItem>
+            </SelectContent>
+          </Select>
 
-          <DialogFooter>
+          <DialogFooter className="mt-4">
             <Button
               type="button"
               variant="outline"
@@ -140,7 +166,10 @@ export function EditDialog({
             >
               Cancelar
             </Button>
-            <SubmitButtonClient className="lg:w-[149px] bg-gradient-to-r from-blue-500 to-purple-600" isPending={loading}>
+            <SubmitButtonClient
+              className="lg:w-[149px] bg-gradient-to-r from-blue-500 to-purple-600"
+              isPending={loading}
+            >
               Salvar alterações
             </SubmitButtonClient>
           </DialogFooter>

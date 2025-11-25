@@ -142,6 +142,7 @@ const updateIndexesOnServer = useMemo(() => debounce(async (normalized: Prize[])
     formData.append("name", updatedItem.name);
     formData.append("description", updatedItem.description);
     formData.append("imageUrl", updatedItem.imageUrl);
+    formData.append("isGood", String(updatedItem.isGood));
     formData.append("index", String(updatedItem.index));
     formData.append("color", updatedItem.color);
 
@@ -230,6 +231,7 @@ const updateIndexesOnServer = useMemo(() => debounce(async (normalized: Prize[])
       description: "",
       imageUrl: "",
       color: "",
+      isGood: true,
       index: prize?.length + 1 || 1,
     });
     setIsDialogOpen(true);
